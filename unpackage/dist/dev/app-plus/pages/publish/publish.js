@@ -1207,9 +1207,9 @@ var b = "development" === "development",
   A = S({
     "address": [
         "127.0.0.1",
+        "172.30.201.234",
         "192.168.107.1",
-        "192.168.88.1",
-        "192.168.38.80"
+        "192.168.88.1"
     ],
     "debugPort": 9000,
     "initialLaunchType": "local",
