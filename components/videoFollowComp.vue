@@ -501,7 +501,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/fans/follow?myId=" + userId + "&vlogerId=" + vlogerId,
+					url: serverUrl + "/fans/follow?fanId=" + userId + "&vlogerId=" + vlogerId,
 					success(result) {
 
 						if (result.data.code == 200) {
@@ -637,7 +637,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/vlog/followList?myId=" + userId + "&current=" + page + "&pageSize=10",
+					url: serverUrl + "/vlog/followList?fanId=" + userId + "&current=" + page + "&pageSize=10",
 					success(result) {
 
 						if (result.data.code == 200) {

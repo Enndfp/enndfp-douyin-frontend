@@ -189,7 +189,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/vlog/friendList?myId=" + userId + "&current=" + page + "&pageSize=10",
+					url: serverUrl + "/vlog/friendList?fanId=" + userId + "&current=" + page + "&pageSize=10",
 					success(result) {
 						console.log(result);
 

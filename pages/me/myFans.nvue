@@ -116,25 +116,7 @@
 				page: 0,
 				totalPage: 0,
 				// 是朋友代表互关，默认都不是，点击互关后，双方的关联表都要标记互关
-				fansList: [{
-						"fanId": "1001",
-						"face": "../../static/face/face-arrow-1.png",
-						"nickname": "风间影月",
-						"friend": false
-					},
-					{
-						"fanId": "1002",
-						"face": "../../static/face/face-arrow-1.png",
-						"nickname": "慕课网",
-						"friend": true
-					},
-					{
-						"fanId": "1003",
-						"face": "../../static/face/face-arrow-1.png",
-						"nickname": "风间影月",
-						"friend": false
-					}
-				]
+				fansList: []
 			}
 		},
 		onLoad() {
@@ -164,7 +146,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/fans/cancel?myId=" + userId + "&vlogerId=" + vlogerId,
+					url: serverUrl + "/fans/cancel?fanId=" + userId + "&vlogerId=" + vlogerId,
 					success(result) {
 
 						if (result.data.code == 200) {
@@ -191,7 +173,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/fans/follow?myId=" + userId + "&vlogerId=" + vlogerId,
+					url: serverUrl + "/fans/follow?fanId=" + userId + "&vlogerId=" + vlogerId,
 					success(result) {
 
 						if (result.data.code == 200) {
@@ -223,7 +205,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/fans/queryMyFans?myId=" + userId + "&current=" + page + "&pageSize=10",
+					url: serverUrl + "/fans/queryMyFans?vlogerId=" + userId + "&current=" + page + "&pageSize=10",
 					success(result) {
 						if (result.data.code == 200) {
 							var fansList = result.data.data.records;

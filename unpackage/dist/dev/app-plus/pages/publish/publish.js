@@ -1209,7 +1209,7 @@ var b = "development" === "development",
         "127.0.0.1",
         "192.168.107.1",
         "192.168.88.1",
-        "192.168.94.80"
+        "192.168.38.80"
     ],
     "debugPort": 9000,
     "initialLaunchType": "local",

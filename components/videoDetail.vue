@@ -504,7 +504,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/fans/follow?myId=" + userId + "&vlogerId=" + vlogerId,
+					url: serverUrl + "/fans/follow?fanId=" + userId + "&vlogerId=" + vlogerId,
 					success(result) {
 						
 						if (result.data.code == 200) {
