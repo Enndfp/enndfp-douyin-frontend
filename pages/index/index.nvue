@@ -243,12 +243,12 @@
 				}
 			}
 
-
 			// 判断如果当前是tab为1或2，则播放，否则不播放
 			if (me.curIndex == 0) {
 				// 虚位以待
 			} else if (me.curIndex == 1) {
 				me.playFollowStatus = true;
+				console.log("111")
 			} else if (me.curIndex == 2) {
 				me.playStatus = true;
 			}

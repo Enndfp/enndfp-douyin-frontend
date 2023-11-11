@@ -124,10 +124,9 @@
 			</refresh>
 			<cell :recycle="false" v-for="(item, index) in playerList" :key="index" :data-index="index"
 				:style="{'height': screenHeight + 'px'}">
-				<!-- <uni-video :src="item.url" :playStatus="playStatus" :screenHeight="screenHeight" v-if="playerCur === index" @play="onplay"></uni-video> -->
 				<video ref="myFollowVideo" id="myFollowVideo"
 					:object-fit="item.width >= item.height ? 'contain' : 'fill'" :src="item.url" :controls="false"
-					:enable-progress-gesture="false" v-if="playerCur === index" loop autoplay show-loading="true"
+					:enable-progress-gesture="false" v-if="playerCur === index" loop show-loading="true"
 					style="width: 750rpx;" :style="{height: screenHeight + 'px'}" @click="playOrPause" @play="onplay"
 					@error="onerror" @timeupdate="timeupdate"></video>
 				<image :lazy-load="true" :fade-show="false" v-if="!item.play" :src="item.cover"
@@ -208,9 +207,6 @@
 			playFollowStatus: {
 				default: false
 			},
-			playStatus: {
-				default: false
-			},
 			videoList: {
 				default: []
 			},
@@ -251,7 +247,6 @@
 			if (!this.isIOS) {
 				this.objectFit = "cover";
 			}
-
 			// 查询首页短视频列表
 			this.displayVideoPaging(this.page + 1, true);
 
@@ -655,7 +650,6 @@
 								me.setThisVlogInfo();
 								me.freshCommentCounts();
 							}
-							//me.doTimer();
 						} else {
 							uni.showToast({
 								title: result.data.message,
@@ -666,7 +660,7 @@
 
 					},
 					complete() {
-						// me.doTimer();
+						uni.stopPullDownRefresh();
 					}
 				});
 			},
@@ -679,7 +673,7 @@
 						me.videoContext.pause();
 						me.playFollowStatus = false;
 					}
-				}, 3000)
+				}, 1000)
 			},
 
 			doplay: function(time) {
