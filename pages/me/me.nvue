@@ -241,8 +241,8 @@
 
 			<view class="vlog-list">
 				<block v-for="(vlog,index) in publicVlogList" :key="index">
-					<image class="vlog-cover" style="align-self: center;" :src="vlog.cover" @click="goToVlog(vlog.id)"
-						mode="aspectFill"></image>
+					<image class="vlog-cover" style="align-self: center;" :src="vlog.cover"
+						@click="goToVlog(vlog.vlogId)" mode="aspectFill"></image>
 				</block>
 			</view>
 
@@ -315,7 +315,6 @@
 				return;
 			}
 			this.pageUserInfo = myUserInfo;
-			console.log(myUserInfo);
 			var userId = myUserInfo.id;
 			var serverUrl = app.globalData.serverUrl;
 			// 查询用户信息
@@ -362,7 +361,7 @@
 				var month = birthArr[1];
 				var day = birthArr[2];
 
-				app.testAstro(month, day);
+				// app.testAstro(month, day);
 				var astro = app.getAstro(month, day);
 				this.astro = astro;
 
@@ -503,6 +502,7 @@
 			goToVlog(vlogId) {
 				uni.navigateTo({
 					url: "../vlog/vlog?vlogId=" + vlogId
+
 				})
 			},
 

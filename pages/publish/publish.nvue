@@ -259,7 +259,7 @@
 				var userId = getApp().getUserInfoSession().id;
 
 				var vlog = {
-					"vlogUserId": userId,
+					"vlogerId": userId,
 					"url": me.videoUrl,
 					"cover": me.tempCover,
 					"title": me.title,

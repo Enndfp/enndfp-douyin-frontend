@@ -553,6 +553,7 @@
 				var me = me;
 			},
 
+			onpullingdown(e) {},
 			onrefresh(e) {
 				this.refreshing = true;
 				setTimeout(() => {
@@ -637,7 +638,7 @@
 						headerUserId: userId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/vlog/followList?fanId=" + userId + "&current=" + page + "&pageSize=10",
+					url: serverUrl + "/vlog/followList?userId=" + userId + "&current=" + page + "&pageSize=10",
 					success(result) {
 
 						if (result.data.code == 200) {
@@ -654,7 +655,7 @@
 								me.setThisVlogInfo();
 								me.freshCommentCounts();
 							}
-							me.doTimer();
+							//me.doTimer();
 						} else {
 							uni.showToast({
 								title: result.data.message,
