@@ -201,7 +201,6 @@
 				playStatus: false,
 				playFollowStatus: false,
 
-				// videoList: getApp().getDefaultVlogList(),			// 首页一开始查询所得的默认视频列表
 				videoList: [], // 首页一开始查询所得的默认视频列表
 				refreshList: [], // 下拉刷新后获得的新的列表
 				pagingList: [], // 分页list

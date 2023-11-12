@@ -114,7 +114,6 @@
 				screenHeight: 0,
 				statusBarHeight: 0,
 				vlogWidth: 0,
-				// waterList: getApp().getDefaultVlogList()
 
 				waterList: [],
 				page: 0,
@@ -222,7 +221,6 @@
 				// console.log("appearVlog --- index=" + index);
 				// 如果最后一个vlog出现，则加载更多
 				if (index == (me.waterList.length - 1)) {
-					// var newList = getApp().getDefaultVlogList();
 					// me.waterList = me.waterList.concat(newList);
 					me.loadMore();
 				}

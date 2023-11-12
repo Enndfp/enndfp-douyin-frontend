@@ -278,7 +278,7 @@
 				screenHeightUnLogin: 0,
 
 				currentTab: 0,
-				vlogList: getApp().getDefaultVlogList(),
+				vlogList: [],
 				isFollow: false,
 
 				isAndroid: uni.getSystemInfoSync().platform == "android",

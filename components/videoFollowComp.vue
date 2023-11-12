@@ -165,12 +165,12 @@
 							@click="likeOrDislikeVlog(1)" class="icon"></image>
 						<image v-if="item.doILikeThisVlog" src="/static/images/icon-like.png"
 							@click="likeOrDislikeVlog(0)" class="icon"></image>
-						<text class="some-counts">{{item.likeCounts}}</text>
+						<text class="some-counts">{{getGraceNumber(item.likeCounts)}}</text>
 					</view>
 					<view class="comment-and-share-box">
 						<image src="/static/images/icon-comments.png" @click="commentToggle" class="icon"></image>
 						<!-- <text class="some-counts">{{item.commentsCounts}}</text> -->
-						<text class="some-counts">{{thisVlogTotalComentCounts}}</text>
+						<text class="some-counts">{{getGraceNumber(thisVlogTotalComentCounts)}}</text>
 					</view>
 					<view class="comment-and-share-box">
 						<image src="/static/images/icon-share.png" @click="shareToggle" class="icon"></image>
@@ -278,6 +278,10 @@
 			}
 		},
 		methods: {
+			// 把超过1000或10000的数字调整，比如1.3k/6.8w
+			getGraceNumber(num) {
+				return getApp().graceNumber(num);
+			},
 			freshCommentCounts() {
 				var me = this;
 				var userId = getApp().getUserInfoSession().id;
@@ -603,6 +607,21 @@
 
 				this.times = new Date().getTime();
 
+				// 检测用户向上滚动并且视频尚未播放
+				if (!isNext && !this.playerList[this.currentIndex].play) {
+					setTimeout(() => {
+						this.videoContext.play();
+						this.playerList[this.currentIndex].play = true;
+					}, 1); // 延迟100毫秒后播放视频
+				}
+				// 检测用户向下滚动并且视频尚未播放
+				if (isNext && !this.playerList[this.currentIndex].play) {
+					setTimeout(() => {
+						this.videoContext.play();
+						this.playerList[this.currentIndex].play = true;
+					}, 1); // 延迟100毫秒后播放视频
+				}
+
 				// 判断如果视频列表总长度-当前下标，少于3个，则开始分页查询后续的视频，并且追加到现有list中
 				if ((this.playerList.length - this.currentIndex) < 3) {
 					// 如果要分页的page和总数totalPage相等，则没有更多
@@ -673,7 +692,7 @@
 						me.videoContext.pause();
 						me.playFollowStatus = false;
 					}
-				}, 1000)
+				}, 300)
 			},
 
 			doplay: function(time) {
