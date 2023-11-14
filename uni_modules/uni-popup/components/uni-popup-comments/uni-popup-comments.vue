@@ -406,6 +406,7 @@
 
 			unlike(commentUserId, commentId, index) {
 				var me = this;
+				var vlogId = me.thisVlogId;
 
 				var serverUrl = app.globalData.serverUrl;
 				uni.request({
@@ -414,7 +415,8 @@
 						headerUserId: me.loginUserId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/comment/unlike?userId=" + me.loginUserId + "&commentId=" + commentId,
+					url: serverUrl + "/comment/unlike?userId=" + me.loginUserId + "&commentId=" + commentId +
+						"&vlogId=" + vlogId,
 					success(result) {
 						console.log(result);
 
@@ -434,6 +436,7 @@
 
 			like(commentUserId, commentId, index) {
 				var me = this;
+				var vlogId = me.thisVlogId;
 
 				var myUserInfo = getApp().getUserInfoSession();
 				if (myUserInfo == null) {
@@ -460,7 +463,8 @@
 						headerUserId: me.loginUserId,
 						headerUserToken: app.getUserSessionToken()
 					},
-					url: serverUrl + "/comment/like?userId=" + me.loginUserId + "&commentId=" + commentId,
+					url: serverUrl + "/comment/like?userId=" + me.loginUserId + "&commentId=" + commentId +
+						"&vlogId=" + vlogId,
 					success(result) {
 						console.log(result);
 
